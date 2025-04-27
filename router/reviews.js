@@ -12,6 +12,8 @@ router.get('/', controllerReviews.index)
 
 router.post('/', controllerReviews.store)
 
+router.delete('/:id', controllerReviews.destroy)
+
 
 
 

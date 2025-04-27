@@ -1,28 +1,29 @@
-const express = require('express')
-const app = express()
-const port = 3003
-const reviewsRouter = require('./router/reviews')
-const notFound = require('./middleware/notFound')
-const errorHandler = require('./middleware/errorHandler')
+const express = require('express');
+const app = express();
+const port = 3003;
+const cors = require('cors');
+const reviewsRouter = require('./router/reviews');
+const notFound = require('./middleware/notFound');
+const errorHandler = require('./middleware/errorHandler');
 
 
-app.use(express.json())
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+};
 
-app.use('/reviews', reviewsRouter)
+app.use(cors(corsOptions));
 
+app.use(express.json());
 
-app.use(express.static('public'))
-app.use(errorHandler)
+app.use('/reviews', reviewsRouter);
 
+app.use(express.static('public'));
+app.use(errorHandler);
 
-
-app.use(notFound)
-
+app.use(notFound);
 
 app.listen(port, () => {
-    console.log(`sono sulla porta${port}`)
-})
-
-
-
-
+    console.log(`sono sulla porta ${port}`);
+});
