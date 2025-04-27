@@ -8,7 +8,7 @@ const errorHandler = require('./middleware/errorHandler');
 
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://680e9e29bbe5c300085a21d8--enerugame.netlify.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
